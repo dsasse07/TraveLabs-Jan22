@@ -2,10 +2,10 @@
 //:
 //: Use `func` to declare a function. Call a function by following its name with a list of arguments in parentheses. Use `->` to separate the parameter names and types from the function’s return type.
 //:
-func greet(person: String, day: String) -> String {
-    return "Hello \(person), today is \(day)."
+func greet(person: String, special: String) -> String {
+    return "Hello \(person), today's special is \(special)."
 }
-greet(person: "Bob", day: "Tuesday")
+greet(person: "Bob", special: "Lasagna")
 
 //: - Experiment:
 //: Remove the `day` parameter. Add a parameter to include today’s lunch special in the greeting.
@@ -82,7 +82,8 @@ hasAnyMatches(list: numbers, condition: lessThanTen)
 //:
 numbers.map({ (number: Int) -> Int in
     let result = 3 * number
-    return result
+    // return result
+    return result % 2 != 0 ? 0 : result // experiment
 })
 
 //: - Experiment:

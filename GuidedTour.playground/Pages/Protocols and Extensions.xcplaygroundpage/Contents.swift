@@ -3,14 +3,16 @@
 //: Use `protocol` to declare a protocol.
 //:
 protocol ExampleProtocol {
-     var simpleDescription: String { get }
-     mutating func adjust()
+    var simpleDescription: String { get }
+    var someotherProp: String { get }
+    mutating func adjust()
 }
 
 //: Classes, enumerations, and structs can all adopt protocols.
 //:
 class SimpleClass: ExampleProtocol {
      var simpleDescription: String = "A very simple class."
+        var someotherProp: String = "banana"
      var anotherProperty: Int = 69105
      func adjust() {
           simpleDescription += "  Now 100% adjusted."
@@ -22,6 +24,7 @@ let aDescription = a.simpleDescription
 
 struct SimpleStructure: ExampleProtocol {
      var simpleDescription: String = "A simple structure"
+    var someotherProp: String = "Apple"
      mutating func adjust() {
           simpleDescription += " (adjusted)"
      }
@@ -41,17 +44,33 @@ extension Int: ExampleProtocol {
     var simpleDescription: String {
         return "The number \(self)"
     }
+    var someotherProp: String {return "banana"}
     mutating func adjust() {
         self += 42
     }
  }
 print(7.simpleDescription)
 
+protocol AbsValue {
+    var absVal: Double {get}
+}
+
+extension Double : AbsValue {
+    var absVal: Double {
+        return self < 0 ? self * -1 : self
+    }
+}
+
+let pos: Double = 70
+pos.absVal
+let neg: Double = -100
+neg.absVal
 //: - Experiment:
 //: Write an extension for the `Double` type that adds an `absoluteValue` property.
 //:
 //: You can use a protocol name just like any other named type—for example, to create a collection of objects that have different types but that all conform to a single protocol. When you work with values whose type is a protocol type, methods outside the protocol definition aren’t available.
 //:
+
 let protocolValue: ExampleProtocol = a
 print(protocolValue.simpleDescription)
 // print(protocolValue.anotherProperty)  // Uncomment to see the error

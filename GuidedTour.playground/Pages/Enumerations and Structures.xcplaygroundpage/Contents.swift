@@ -32,8 +32,9 @@ let aceRawValue = ace.rawValue
 //:
 //: Use the `init?(rawValue:)` initializer to make an instance of an enumeration from a raw value. It returns either the enumeration case matching the raw value or `nil` if there’s no matching `Rank`.
 //:
-if let convertedRank = Rank(rawValue: 3) {
+if let convertedRank = Rank(rawValue: 12) {
     let threeDescription = convertedRank.simpleDescription()
+    print(threeDescription)
 }
 
 //: The case values of an enumeration are actual values, not just another way of writing their raw values. In fact, in cases where there isn’t a meaningful raw value, you don’t have to provide one.
@@ -44,18 +45,29 @@ enum Suit {
     func simpleDescription() -> String {
         switch self {
             case .spades:
-                return "spades"
+                return "spades are \(self.color())"
             case .hearts:
-                return "hearts"
+                return "hearts are \(self.color())"
             case .diamonds:
-                return "diamonds"
+                return "diamonds are \(self.color())"
             case .clubs:
-                return "clubs"
+                return "clubs are \(self.color())"
+        }
+    }
+    
+    func color() -> String {
+        switch self {
+            case .clubs, .spades:
+                return "black"
+            case .hearts, .diamonds:
+                return "red"
         }
     }
 }
 let hearts = Suit.hearts
 let heartsDescription = hearts.simpleDescription()
+let diamonds = Suit.diamonds
+let diamondsDesc = diamonds.simpleDescription()
 
 //: - Experiment:
 //: Add a `color()` method to `Suit` that returns “black” for spades and clubs, and returns “red” for hearts and diamonds.
@@ -99,6 +111,5 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 //: - Experiment:
 //: Write a function that returns an array containing a full deck of cards, with one card of each combination of rank and suit.
 //:
-
 
 //: [Previous](@previous) | [Next](@next)

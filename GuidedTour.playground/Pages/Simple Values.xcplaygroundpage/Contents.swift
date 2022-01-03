@@ -23,7 +23,7 @@ let myConstant = 42
 let implicitInteger = 70
 let implicitDouble = 70.0
 let explicitDouble: Double = 70
-
+let myFloat = 4
 //: - Experiment:
 //: Create a constant with an explicit type of `Float` and a value of `4`.
 //:
@@ -42,6 +42,7 @@ let apples = 3
 let oranges = 5
 let appleSummary = "I have \(apples) apples."
 let fruitSummary = "I have \(apples + oranges) pieces of fruit."
+let experiment2 = "Hello JoJo \(2.3 + 3.2)"
 
 //: - Experiment:
 //: Use `\()` to include a floating-point calculation in a string and to include someone’s name in a greeting.

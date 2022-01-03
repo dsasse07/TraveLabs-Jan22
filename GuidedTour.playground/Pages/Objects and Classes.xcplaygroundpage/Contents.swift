@@ -4,8 +4,12 @@
 //:
 class Shape {
     var numberOfSides = 0
+    let myConstant = 7
     func simpleDescription() -> String {
         return "A shape with \(numberOfSides) sides."
+    }
+    func argumentMethod(myArgument: String) -> String {
+        return "The result of my argument."
     }
 }
 
@@ -62,6 +66,19 @@ let test = Square(sideLength: 5.2, name: "my test square")
 test.area()
 test.simpleDescription()
 
+class Circle: NamedShape {
+    var radius: Float
+    init(radius: Float, name: String){
+        self.radius = radius
+        super.init(name: name)
+    }
+    
+    func area() -> Float {
+        return 3.14 * radius * radius
+    }
+}
+let circle = Circle(radius: 2, name: "little circle")
+circle.area()
 //: - Experiment:
 //: Make another subclass of `NamedShape` called `Circle` that takes a radius and a name as arguments to its initializer. Implement an `area()` and a `simpleDescription()` method on the `Circle` class.
 //:
@@ -93,6 +110,7 @@ var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
 print(triangle.perimeter)
 triangle.perimeter = 9.9
 print(triangle.sideLength)
+print(triangle.perimeter)
 
 //: In the setter for `perimeter`, the new value has the implicit name `newValue`. You can provide an explicit name in parentheses after `set`.
 //:
