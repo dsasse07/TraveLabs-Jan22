@@ -1,30 +1,26 @@
 //
 //  DetailViewController.swift
-//  Project 1
+//  Flag Share
 //
-//  Created by Daniel Sasse on 1/4/22.
+//  Created by Daniel Sasse on 1/5/22.
 //
 
 import UIKit
 
 class DetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
-    var selectedImage: String?
-    
+    var flagToDisplay: String? = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = selectedImage
+
+        title = flagToDisplay
         navigationItem.largeTitleDisplayMode = .never
-        // Creating a button within the nav bar
-        // barButtonSystemItem specifies what to display, action specifies the method to invoke, whereas target specifies where the method to invoke can be found
-        // #selector tells Swift that the method passed in should exist. It protects from mistakes
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
-        
-        // When this controller loads, if selectedImage has a value, we will create a UIImage from its value and pass it to the ImageView
-        if let imageToLoad = selectedImage {
-            imageView.image = UIImage(named: imageToLoad)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareFlag))
+
+        if let imageToDisplay = flagToDisplay {
+            imageView.image = UIImage(named: imageToDisplay)
+            imageView.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05).cgColor
         }
     }
     
@@ -38,17 +34,15 @@ class DetailViewController: UIViewController {
         navigationController?.hidesBarsOnTap = false
     }
     
-
-    @objc func shareTapped(){
-        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+    @objc func shareFlag(){
+        guard let image = imageView.image?.jpegData(compressionQuality: 1) else {
             print("No Image Found")
             return
         }
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: [])
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        present(activityViewController, animated: true)
+        present(activityViewController, animated: true, completion: nil)
     }
-
     /*
     // MARK: - Navigation
 

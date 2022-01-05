@@ -13,6 +13,7 @@
 		612A33012785F457004EEF07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 612A32FF2785F457004EEF07 /* Main.storyboard */; };
 		612A33032785F459004EEF07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612A33022785F459004EEF07 /* Assets.xcassets */; };
 		612A33062785F459004EEF07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 612A33042785F459004EEF07 /* LaunchScreen.storyboard */; };
+		612A330E2785F68E004EEF07 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612A330D2785F68E004EEF07 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		612A33022785F459004EEF07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		612A33052785F459004EEF07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		612A33072785F459004EEF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		612A330D2785F68E004EEF07 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				612A32FB2785F457004EEF07 /* SceneDelegate.swift */,
 				612A32FD2785F457004EEF07 /* ViewController.swift */,
 				612A32FF2785F457004EEF07 /* Main.storyboard */,
+				612A330D2785F68E004EEF07 /* DetailViewController.swift */,
 				612A33022785F459004EEF07 /* Assets.xcassets */,
 				612A33042785F459004EEF07 /* LaunchScreen.storyboard */,
 				612A33072785F459004EEF07 /* Info.plist */,
@@ -141,6 +144,7 @@
 				612A32FE2785F457004EEF07 /* ViewController.swift in Sources */,
 				612A32FA2785F457004EEF07 /* AppDelegate.swift in Sources */,
 				612A32FC2785F457004EEF07 /* SceneDelegate.swift in Sources */,
+				612A330E2785F68E004EEF07 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +295,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Flag Share/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Flag Share";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,6 +323,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Flag Share/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Flag Share";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
