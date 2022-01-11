@@ -136,38 +136,46 @@ class ViewController: UIViewController {
     }
     
     func loadLevel(){
-        var clueString = ""
-        var solutionString = ""
-        var letterPieces = [String]()
-        
-        if let levelFileUrl = Bundle.main.url(forResource: "level\(level)", withExtension: "txt"){
-            if let levelContents = try? String(contentsOf: levelFileUrl) {
-                var lines = levelContents.components(separatedBy: "\n")
-                lines.shuffle()
+        DispatchQueue.global(qos: .userInitiated).async {
+            [weak self] in
+                var clueString = ""
+                var solutionString = ""
+                var letterPieces = [String]()
+                guard let level = self?.level else {return}
                 
-                for (index, line) in lines.enumerated() {
-                    let parts = line.components(separatedBy: ": ")
-                    let answer = parts[0]
-                    let clue = parts[1]
-                    
-                    clueString += "\(index). \(clue)\n"
-                    let solutionWord = answer.replacingOccurrences(of: "|", with: "")
-                    solutions.append(solutionWord)
-                    solutionString += "\(solutionWord.count) letters\n"
-                    
-                    let bits = parts[0].components(separatedBy: "|")
-                    letterPieces += bits
+            if let levelFileUrl = Bundle.main.url(forResource: "level\(level)", withExtension: "txt"){
+                    if let levelContents = try? String(contentsOf: levelFileUrl) {
+                        var lines = levelContents.components(separatedBy: "\n")
+                        lines.shuffle()
+                        
+                        for (index, line) in lines.enumerated() {
+                            let parts = line.components(separatedBy: ": ")
+                            let answer = parts[0]
+                            let clue = parts[1]
+                            
+                            clueString += "\(index). \(clue)\n"
+                            let solutionWord = answer.replacingOccurrences(of: "|", with: "")
+                            self?.solutions.append(solutionWord)
+                            solutionString += "\(solutionWord.count) letters\n"
+                            
+                            let bits = parts[0].components(separatedBy: "|")
+                            letterPieces += bits
+                        }
+                    }
                 }
-            }
-        }
-        
-        cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
-        answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
-        letterButtons.shuffle()
-        
-        if letterButtons.count == letterPieces.count {
-            for i in 0..<letterButtons.count {
-                letterButtons[i].setTitle(letterPieces[i], for: .normal)
+            DispatchQueue.main.async {
+                [weak self] in
+                    self?.cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+                    self?.answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+                    self?.letterButtons.shuffle()
+                    
+                    guard let buttonCount = self?.letterButtons.count else {return}
+                    
+                    if buttonCount == letterPieces.count {
+                        for i in 0..<buttonCount {
+                            self?.letterButtons[i].setTitle(letterPieces[i], for: .normal)
+                        }
+                    }
             }
         }
     }
