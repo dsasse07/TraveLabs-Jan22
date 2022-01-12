@@ -53,7 +53,7 @@ class LetterGuess {
         self.correctLetter = String(correctWord[colNum])
         self.correctWord = correctWord
         self.keyboardButtons = keyboardButtons
-        let xPos = (250 / 5 * col) + col * 5
+        let xPos = (280 / 5 * col) + col * 5
     
         letterLabel.layer.borderWidth = 1
         letterLabel.layer.borderColor = UIColor.lightGray.cgColor
@@ -139,6 +139,7 @@ class ViewController: UIViewController {
     var correctWordLabel: UILabel!
     
     // KeyBoard Buttons
+    var keyboardButtons: [String: UIButton] = [:]
     @IBOutlet var qButton: UIButton!
     @IBOutlet var wButton: UIButton!
     @IBOutlet var eButton: UIButton!
@@ -170,10 +171,9 @@ class ViewController: UIViewController {
     @IBOutlet var mButton: UIButton!
     @IBOutlet var deleteButton: UIButton!
     
-    // New Game Button
+    // Game Buttons
     @IBOutlet var newGameButton: UIButton!
-    
-    var keyboardButtons: [String: UIButton] = [:]
+    @IBOutlet var visibilityButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -212,6 +212,7 @@ class ViewController: UIViewController {
         correctWordLabel = UILabel()
         correctWordLabel.translatesAutoresizingMaskIntoConstraints = false
         correctWordLabel.font = UIFont.systemFont(ofSize: 24)
+        correctWordLabel.isHidden = true
                 
         view.addSubview(correctWordLabel)
         
@@ -270,9 +271,18 @@ class ViewController: UIViewController {
         var currentGuessWord = ""
         for letter in guesses[currentGuessNumber].letters {
             currentGuessWord += letter.letter
-            letter.isSubmitted = true
+        }
+        
+        guard let words = words else {return}
+        if !words.contains(currentGuessWord){
+            displayInvalidWordAlert()
+            return
         }
 
+        for letter in guesses[currentGuessNumber].letters {
+            letter.isSubmitted = true
+        }
+        
         if currentGuessWord == correctWord {
             endGame(condition: .win, score: currentGuessNumber)
         } else if currentGuessNumber == 5{
@@ -281,7 +291,12 @@ class ViewController: UIViewController {
         
         currentGuessNumber += 1
         currentLetterNumber = 0
-        
+    }
+    
+    func displayInvalidWordAlert(){
+        let ac = UIAlertController(title: "Invalid Word", message: "This word is not found in the word list", preferredStyle: .alert)
+        ac.addAction((UIAlertAction(title: "Ok", style: .default, handler: nil)))
+        present(ac, animated: true, completion: nil)
     }
     
     func endGame(condition: GameEndCondition, score: Int){
@@ -361,6 +376,16 @@ class ViewController: UIViewController {
         }
     
         guesses[currentGuessNumber].letters[letterToChange].letter = letter
+    }
+    
+    
+    @IBAction func toggleVisibility(_ sender: Any) {
+        if correctWordLabel.isHidden {
+            visibilityButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        } else {
+            visibilityButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
+        correctWordLabel.isHidden = !correctWordLabel.isHidden
     }
     
 }
