@@ -34,14 +34,18 @@ class LetterGuess {
         didSet {
             if letter == correctLetter {
                 letterLabel.backgroundColor = .systemGreen
+                letterLabel.textColor = .white
                 adjustButtonColor(.systemGreen)
             } else if correctWord.contains(letter) {
                 letterLabel.backgroundColor = .systemYellow
+                letterLabel.textColor = .white
                 adjustButtonColor(.systemYellow)
             } else if letter.isEmpty {
                 letterLabel.backgroundColor = .systemBackground
+                letterLabel.textColor = .black
             } else {
                 letterLabel.backgroundColor = .lightGray
+                letterLabel.textColor = .white
                 adjustButtonColor(.lightGray)
             }
         }
@@ -128,6 +132,7 @@ class ViewController: UIViewController {
             correctWord = words?.randomElement() ?? "OOPSY"
         }
     }
+    var gameResults = [GameResult]()
     var wordCount = 0
     var correctWord = ""
     var currentGuessNumber = 0
@@ -174,6 +179,7 @@ class ViewController: UIViewController {
     // Game Buttons
     @IBOutlet var newGameButton: UIButton!
     @IBOutlet var visibilityButton: UIButton!
+    @IBOutlet var historyButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -223,12 +229,29 @@ class ViewController: UIViewController {
         
         DispatchQueue.global(qos: .userInitiated).async {
             [weak self, weak correctWordLabel] in
-            self?.loadData()
+            self?.loadWords()
             
             DispatchQueue.main.async {
                 [weak self, weak correctWordLabel] in
                 correctWordLabel?.text = self?.correctWord
                 self?.buildGuessViews()
+            }
+        }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            [weak self] in
+            self?.loadData()
+        }
+    }
+    
+    func loadData() {
+        let defaults = UserDefaults.standard
+        if let savedData = defaults.object(forKey: "gameResults") as? Data {
+            let jsonDecoder = JSONDecoder()
+            do {
+                gameResults = try jsonDecoder.decode([GameResult].self, from: savedData)
+            } catch {
+                fatalError("Unable to load game history")
             }
         }
     }
@@ -244,7 +267,7 @@ class ViewController: UIViewController {
         ]
     }
     
-    func loadData() {
+    func loadWords() {
         if let url = Bundle.main.url(forResource: "sgb-words", withExtension: "txt") {
             if let words = try? String(contentsOf: url) {
                 self.words = words.components(separatedBy: "\n")
@@ -311,11 +334,26 @@ class ViewController: UIViewController {
             title = "Sorry, not this time"
             message = "The correct word was: \(correctWord)"
         }
-    
+        
+        let result = GameResult(word: correctWord, score: score + 1, date: NSDate.now.formatted())
+        gameResults.append(result)
+        save()
+            
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Play Again!", style: .default, handler: newGame))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(ac, animated: true, completion: nil)
+    }
+    
+    func save(){
+        let jsonEncoder = JSONEncoder()
+        
+        if let resultsData = try? jsonEncoder.encode(gameResults) {
+            let defaults = UserDefaults.standard
+            defaults.set(resultsData, forKey: "gameResults")
+        } else {
+            print("Failed to save")
+        }
     }
     
     @IBAction func newGameTapped(_ sender: Any) {
@@ -386,6 +424,15 @@ class ViewController: UIViewController {
             visibilityButton.setImage(UIImage(systemName: "eye"), for: .normal)
         }
         correctWordLabel.isHidden = !correctWordLabel.isHidden
+    }
+    
+    @IBAction func showHistory(_ sender: Any) {
+        if let historyController = storyboard?.instantiateViewController(withIdentifier: "History") as? HistoryViewController {
+            historyController.results = gameResults
+            navigationController?.pushViewController(historyController, animated: true)
+        }
+        
+        
     }
     
 }

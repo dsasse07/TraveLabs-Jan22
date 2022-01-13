@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1QL-a3-O13">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apN-6M-jvK">
-                                <rect key="frame" x="67" y="116" width="280" height="377"/>
+                                <rect key="frame" x="67" y="160" width="280" height="333"/>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A4s-zE-0n3">
                                 <rect key="frame" x="25" y="559" width="389" height="243"/>
@@ -598,7 +598,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-cl-AxK">
-                                <rect key="frame" x="25" y="51" width="45" height="31"/>
+                                <rect key="frame" x="25" y="73" width="45" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="eye" catalog="system"/>
                                 <connections>
@@ -606,11 +606,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYI-Ci-8J4">
-                                <rect key="frame" x="349" y="44" width="45" height="45"/>
+                                <rect key="frame" x="349" y="88" width="45" height="1"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system"/>
                                 <connections>
                                     <action selector="newGameTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="czE-kP-INe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNx-A0-8jg">
+                                <rect key="frame" x="25" y="812" width="50" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="calendar" catalog="system"/>
+                                <connections>
+                                    <action selector="showHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qhD-Qx-x0n"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -619,6 +627,8 @@
                         <constraints>
                             <constraint firstItem="OYI-Ci-8J4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="349" id="1W3-Kn-3QN"/>
                             <constraint firstItem="apN-6M-jvK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4lt-3L-kC9"/>
+                            <constraint firstItem="pNx-A0-8jg" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="9gS-Lo-c5f"/>
+                            <constraint firstItem="pNx-A0-8jg" firstAttribute="top" secondItem="A4s-zE-0n3" secondAttribute="bottom" constant="10" id="AY3-l3-SA8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OYI-Ci-8J4" secondAttribute="bottom" constant="773" id="Avv-4E-8oi"/>
                             <constraint firstItem="A4s-zE-0n3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="515" id="ESm-a3-sHC"/>
                             <constraint firstItem="apN-6M-jvK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="J7r-mG-B6D"/>
@@ -626,8 +636,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OYI-Ci-8J4" secondAttribute="trailing" constant="20" id="Med-Ss-bQz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AEM-cl-AxK" secondAttribute="trailing" constant="344" id="PZV-xY-lcs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="apN-6M-jvK" secondAttribute="bottom" constant="369" id="RDR-uy-VZJ"/>
+                            <constraint firstItem="pNx-A0-8jg" firstAttribute="leading" secondItem="A4s-zE-0n3" secondAttribute="leading" id="Uin-Pa-pNa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A4s-zE-0n3" secondAttribute="trailing" constant="15" id="bSt-GG-fTm"/>
                             <constraint firstItem="apN-6M-jvK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="72" id="e8R-Ke-uz5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pNx-A0-8jg" secondAttribute="trailing" constant="339" id="euC-Yc-BVy"/>
                             <constraint firstItem="apN-6M-jvK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="g62-Hw-Fco"/>
                             <constraint firstItem="A4s-zE-0n3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="iIL-x5-SfB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="A4s-zE-0n3" secondAttribute="bottom" constant="60" id="kGh-FQ-2Gr"/>
@@ -637,6 +649,7 @@
                             <constraint firstItem="AEM-cl-AxK" firstAttribute="centerY" secondItem="OYI-Ci-8J4" secondAttribute="centerY" id="zAP-ZT-cq8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="6Kz-DB-uiB"/>
                     <connections>
                         <outlet property="aButton" destination="CwB-eT-mwY" id="Phh-Gi-3VE"/>
                         <outlet property="bButton" destination="qW7-A7-bI5" id="wJF-7D-EZ3"/>
@@ -648,6 +661,7 @@
                         <outlet property="gButton" destination="IXB-4a-ZUi" id="Dcz-Cs-SSZ"/>
                         <outlet property="guessesView" destination="apN-6M-jvK" id="Gqb-8x-17P"/>
                         <outlet property="hButton" destination="wdO-Tp-wIV" id="N5U-ca-3PM"/>
+                        <outlet property="historyButton" destination="pNx-A0-8jg" id="HUy-TF-M3O"/>
                         <outlet property="iButton" destination="CWE-px-0i6" id="OCc-ZL-jl4"/>
                         <outlet property="jButton" destination="23J-i7-Snt" id="3HG-4u-oZS"/>
                         <outlet property="kButton" destination="c6y-zH-oSW" id="lxV-7K-AbF"/>
@@ -673,11 +687,74 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="931.88405797101461" y="138.61607142857142"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="bvc-oO-f9b">
+            <objects>
+                <tableViewController storyboardIdentifier="History" id="4Yt-73-ULs" customClass="HistoryViewController" customModule="Wordle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="msG-r6-Z8M">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Result" textLabel="gA1-ku-w58" detailTextLabel="NE0-EN-LRr" style="IBUITableViewCellStyleValue1" id="u10-Vm-suG">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u10-Vm-suG" id="0Ek-mV-jws">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gA1-ku-w58">
+                                            <rect key="frame" x="20" y="15" width="25" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NE0-EN-LRr">
+                                            <rect key="frame" x="350" y="15" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4Yt-73-ULs" id="clF-JO-omg"/>
+                            <outlet property="delegate" destination="4Yt-73-ULs" id="62o-du-0W6"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dCh-9F-IsI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1823.1884057971015" y="138.61607142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QIr-Ym-vdS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1QL-a3-O13" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mbh-14-5vQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4Ma-Gd-9Xc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JUK-ZR-OiN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="21.739130434782609" y="138.61607142857142"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="delete.left" catalog="system" width="128" height="104"/>
         <image name="eye" catalog="system" width="128" height="81"/>
