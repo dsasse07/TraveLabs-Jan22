@@ -325,17 +325,20 @@ class ViewController: UIViewController {
     func endGame(condition: GameEndCondition, score: Int){
         var title: String
         var message: String
+        var score = score
         gameOver = true
         
         if condition == GameEndCondition.win {
             title = "You Did It!"
-            message = "You scored \(score + 1)/6!"
+            score += 1
+            message = "You scored \(score)/6!"
         } else {
             title = "Sorry, not this time"
+            score = 0
             message = "The correct word was: \(correctWord)"
         }
         
-        let result = GameResult(word: correctWord, score: score + 1, date: NSDate.now.formatted())
+        let result = GameResult(word: correctWord, score: score, date: NSDate.now.formatted())
         gameResults.append(result)
         save()
             
