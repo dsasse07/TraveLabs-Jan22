@@ -13,7 +13,7 @@
 		612A334327873380004EEF07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 612A334127873380004EEF07 /* Main.storyboard */; };
 		612A334527873381004EEF07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612A334427873381004EEF07 /* Assets.xcassets */; };
 		612A334827873381004EEF07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 612A334627873381004EEF07 /* LaunchScreen.storyboard */; };
-		612A335027875168004EEF07 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 612A334F27875168004EEF07 /* start.txt */; };
+		618174712791EB1300BC927D /* eightLetterWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 618174702791EB1300BC927D /* eightLetterWords.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		612A334427873381004EEF07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		612A334727873381004EEF07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		612A334927873381004EEF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		612A334F27875168004EEF07 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
+		618174702791EB1300BC927D /* eightLetterWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eightLetterWords.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				612A334427873381004EEF07 /* Assets.xcassets */,
 				612A334627873381004EEF07 /* LaunchScreen.storyboard */,
 				612A334927873381004EEF07 /* Info.plist */,
-				612A334F27875168004EEF07 /* start.txt */,
+				618174702791EB1300BC927D /* eightLetterWords.txt */,
 			);
 			path = "Word Game";
 			sourceTree = "<group>";
@@ -129,8 +129,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				612A334827873381004EEF07 /* LaunchScreen.storyboard in Resources */,
-				612A335027875168004EEF07 /* start.txt in Resources */,
 				612A334527873381004EEF07 /* Assets.xcassets in Resources */,
+				618174712791EB1300BC927D /* eightLetterWords.txt in Resources */,
 				612A334327873380004EEF07 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

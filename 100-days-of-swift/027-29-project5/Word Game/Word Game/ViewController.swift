@@ -10,19 +10,26 @@ import UIKit
 class ViewController: UITableViewController {
     var allWords = [String]()
     var usedWords = [String]()
-    var score = 0
+    var score = 0 {
+        didSet {
+            scoreButton.title = "\(score)"
+        }
+    }
+    var scoreButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scoreButton = UIBarButtonItem(title: "\(score)", style: .plain, target: self, action: #selector(displayScore))
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(startGame)),
-            UIBarButtonItem(title: "\(score)", style: .plain, target: self, action: #selector(displayScore)),
+            scoreButton
+            ,
             
         ]
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForWord))
         
-        if let pathUrl = Bundle.main.url(forResource: "start", withExtension: "txt") {
+        if let pathUrl = Bundle.main.url(forResource: "eightLetterWords", withExtension: "txt") {
             if let startWords = try? String(contentsOf: pathUrl){
                 allWords = startWords.components(separatedBy: "\n")
             }

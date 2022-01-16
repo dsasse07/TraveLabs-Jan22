@@ -155,6 +155,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         func cancelRequest(action: UIAlertAction! = nil) { decisionHandler(.cancel) }
         let url = navigationAction.request.url
+
         if let host = url?.host {
             for website in websites {
                 if host.contains(website){
@@ -163,9 +164,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
                 }
             }
         }
-        let alertController = UIAlertController(title: "Blocked", message: "Sorry, this website is not on the approved list", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: cancelRequest))
-        present(alertController, animated: true, completion: nil)
+        decisionHandler(.cancel)
+//        let alertController = UIAlertController(title: "Blocked", message: "Sorry, this website is not on the approved list", preferredStyle: .alert)
+//        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: cancelRequest))
+//        present(alertController, animated: true, completion: nil)
     }
     
     @objc func refreshWebView(sender: UIRefreshControl?){
